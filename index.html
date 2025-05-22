@@ -1,20 +1,84 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
+
 </head>
 <body>
    <div class="mainContainer">
-        <div class="container"></div>
-           <div class="header">Weather App</div>
-            <div class="box"> </div>
-            <div>
-
+      <div class="container"><h1>Weather App</h1></div>
+      <div class="box"> 
+        <img src="https://i.pinimg.com/736x/ff/47/6f/ff476f253a4695d1e499e1e96a5793c1.jpg" alt="Temp" class="temperature-img">
+         <div class="datetime" id="datetime">21 May 2025<br>
+              10:30 AM</div>
+              <div class="Temperature" id="Temperature">32&deg;C
             </div>
+            <div class="Weather" id="Weather">Mostly Sunny</div>
+           
+            <div class="time-forecast">
+                <div class="time-block">
+                  <div class="time-label">11 AM</div>
+                  <i class="wi wi-day-sunny icon"></i>
+                  <div class="time-temp">33°C</div>
+                </div>
+                <div class="time-block">
+                  <div class="time-label">12 PM</div>
+                  <i class="wi wi-day-cloudy icon"></i>
+                  <div class="time-temp">31°C</div>
+                </div>
+                <div class="time-block">
+                  <div class="time-label">1 PM</div>
+                  <i class="wi wi-rain icon"></i>
+                  <div class="time-temp">28°C</div>
+                </div>
+              </div>
+              <div class="extra-info-box">
+                <div class="info-item">
+                  <span class="info-label">Wind:</span>
+                  <span class="info-value">14 km/h</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Humidity:</span>
+                  <span class="info-value">65%</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Pressure:</span>
+                  <span class="info-value">1012 hPa</span>
+                </div>
+              </div>
+              
 
+
+    </div>
+              
+    </div>
+    
     
 </body>
-</html>
+</html> 
+<!-- 
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <title>Weather App</title>
+   <link rel="stylesheet" href="style.css"/>
+ </head>
+ <body>
+   <div class="weather-card">
+     <div class="location">New York, USA</div>
+     <div class="temperature">22°C</div>
+     <div class="condition">Sunny</div>
+     <div class="details">
+       <div>Humidity: 45%</div>
+       <div>Wind: 12 km/h</div>
+     </div>
+   </div>
+ </body>
+ </html>
+  -->
