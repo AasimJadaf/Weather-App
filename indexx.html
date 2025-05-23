@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App UI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #1e3a8a, #4338ca);
+      color: white;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+    }
+    .card {
+      background-color: #312e81;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .flex {
+      display: flex;
+    }
+    .justify-between {
+      justify-content: space-between;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .hourly-card {
+      background-color: #4f46e5;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      min-width: 70px;
+      margin-right: 10px;
+    }
+    .scroll-x {
+      display: flex;
+      overflow-x: auto;
+    }
+    .icon {
+      font-size: 24px;
+    }
+    .large-temp {
+      font-size: 64px;
+      font-weight: bold;
+    }
+    .small-text {
+      font-size: 12px;
+    }
+    .weather-icon {
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Location and Main Weather -->
+    <h2>Bangalore, India</h2>
+    <div class="card text-center">
+      <div>Heavy Rainfall</div>
+      <div class="small-text">Sunday 15 Nov 2020</div>
+      <div class="large-temp">10&deg;</div>
+      <div class="flex justify-between" style="margin-top: 20px;">
+        <div class="text-center">
+          <div class="weather-icon bi bi-clouds"></div>
+          <div class="small-text">25%<br/>CLOUDY</div>
+        </div>
+        <div class="text-center">
+          <div class="weather-icon bi bi-wind"></div>
+          <div class="small-text">65%<br/>WIND</div>
+        </div>
+        <div class="text-center">
+          <div class="weather-icon bi bi-brightness-high"></div>
+          <div class="small-text">10%<br/>SUNNY</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Today Hourly Forecast -->
+    <div class="scroll-x">
+      <div class="hourly-card">
+        <div class="small-text">Now</div>
+        <div class="icon bi bi-snow"></div>
+        <div>10&deg;</div>
+      </div>
+      <div class="hourly-card">
+        <div class="small-text">12:00 PM</div>
+        <div class="icon bi bi-brightness-high"></div>
+        <div>32&deg;</div>
+      </div>
+      <div class="hourly-card">
+        <div class="small-text">04:00 PM</div>
+        <div class="icon bi bi-brightness-high"></div>
+        <div>27&deg;</div>
+      </div>
+      <div class="hourly-card">
+        <div class="small-text">06:00 PM</div>
+        <div class="icon bi bi-cloud-drizzle"></div>
+        <div>15&deg;</div>
+      </div>
+      <div class="hourly-card">
+        <div class="small-text">08:00 PM</div>
+        <div class="icon bi bi-moon-stars"></div>
+        <div>25&deg;</div>
+      </div>
+    </div>
+
+    <!-- Next 7 Days Forecast -->
+    <h3 style="margin-top: 30px;">Next 7 days</h3>
+    <div class="card flex justify-between">
+      <div>
+        <div>Tuesday,</div>
+        <div class="small-text">Cloudy</div>
+      </div>
+      <div class="text-center">
+        <div class="icon bi bi-clouds"></div>
+        <div class="small-text">29%</div>
+      </div>
+    </div>
+    <div class="card flex justify-between">
+      <div>
+        <div>Wednesday,</div>
+        <div class="small-text">Sunny</div>
+      </div>
+      <div class="text-center">
+        <div class="icon bi bi-brightness-high"></div>
+        <div class="small-text">45%</div>
+      </div>
+    </div>
+    <div class="card flex justify-between">
+      <div>
+        <div>Thursday,</div>
+        <div class="small-text">Windy</div>
+      </div>
+      <div class="text-center">
+        <div class="icon bi bi-wind"></div>
+        <div class="small-text">64%</div>
+      </div>
+    </div>
+    <div class="card flex justify-between">
+      <div>
+        <div>Friday,</div>
+        <div class="small-text">Rainy</div>
+      </div>
+      <div class="text-center">
+        <div class="icon bi bi-cloud-rain"></div>
+        <div class="small-text">12%</div>
+      </div>
+    </div>
+    <div class="card flex justify-between">
+      <div>
+        <div>Saturday,</div>
+        <div class="small-text">Sunny</div>
+      </div>
+      <div class="text-center">
+        <div class="icon bi bi-brightness-high"></div>
+        <div class="small-text">57%</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+ <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -35,7 +35,9 @@
                   <i class="wi wi-rain icon"></i>
                   <div class="time-temp">28°C</div>
                 </div>
+            
               </div>
+              <div class="city">Noida</div>
               <div class="extra-info-box">
                 <div class="info-item">
                   <span class="info-label">Wind:</span>
@@ -50,35 +52,111 @@
                   <span class="info-value">1012 hPa</span>
                 </div>
               </div>
-              
-
-
     </div>
+
+   
               
     </div>
-    
     
 </body>
-</html> 
-<!-- 
- <!DOCTYPE html>
- <html lang="en">
- <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <title>Weather App</title>
-   <link rel="stylesheet" href="style.css"/>
- </head>
- <body>
-   <div class="weather-card">
-     <div class="location">New York, USA</div>
-     <div class="temperature">22°C</div>
-     <div class="condition">Sunny</div>
-     <div class="details">
-       <div>Humidity: 45%</div>
-       <div>Wind: 12 km/h</div>
-     </div>
-   </div>
- </body>
- </html>
-  -->
+</html>  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Weather App</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
+</head>
+<body>
+  <div class="mainContainer">
+    <div class="container">
+      <h1>Weather App</h1>
+      <input type="text" id="cityInput" placeholder="Enter city" />
+      <button onclick="getWeatherData()">Search</button>
+    </div>
+
+    <div class="box"> 
+      <img src="https://i.pinimg.com/736x/ff/47/6f/ff476f253a4695d1e499e1e96a5793c1.jpg" alt="Temp" class="temperature-img" />
+      <div class="datetime" id="datetime"></div>
+      <div class="Temperature" id="Temperature"></div>
+      <div class="Weather" id="Weather"></div>
+      <div class="city" id="city">--</div>
+
+      <div class="time-forecast" id="forecast">
+        <!-- Forecast blocks will go here -->
+      </div>
+
+      <div class="extra-info-box">
+        <div class="info-item">
+          <span class="info-label">Wind:</span>
+          <span class="info-value" id="wind"></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Humidity:</span>
+          <span class="info-value" id="humidity"></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Pressure:</span>
+          <span class="info-value" id="pressure"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_KEY = '159654e543638ad0a446d4f7e2ecffaa'; 
+
+    async function getWeatherData() {
+      const city = document.getElementById('cityInput').value || 'Noida';
+      const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+      const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`;
+
+      try {
+        // Fetch current weather
+        const weatherRes = await fetch(weatherUrl);
+        const weatherData = await weatherRes.json();
+
+        document.getElementById('datetime').innerHTML = new Date().toLocaleString();
+        document.getElementById('Temperature').innerHTML = `${weatherData.main.temp}°C`;
+        document.getElementById('Weather').innerHTML = weatherData.weather[0].description;
+        document.getElementById('wind').innerHTML = `${weatherData.wind.speed} km/h`;
+        document.getElementById('humidity').innerHTML = `${weatherData.main.humidity}%`;
+        document.getElementById('pressure').innerHTML = `${weatherData.main.pressure} hPa`;
+        document.getElementById('city').innerText = weatherData.name;
+
+        // Fetch forecast
+        const forecastRes = await fetch(forecastUrl);
+        const forecastData = await forecastRes.json();
+
+        const forecastContainer = document.getElementById('forecast');
+        forecastContainer.innerHTML = ''; // Clear previous
+
+        for (let i = 0; i < 3; i++) {
+          const entry = forecastData.list[i];
+          const time = new Date(entry.dt * 1000).getHours();
+          const temp = entry.main.temp;
+          const icon = entry.weather[0].icon;
+          const block = `
+            <div class="time-block">
+              <div class="time-label">${time}:00</div>
+              <img src="https://openweathermap.org/img/wn/${icon}@2x.png" width="40" />
+              <div class="time-temp">${temp}°C</div>
+            </div>
+          `;
+          forecastContainer.innerHTML += block;
+        }
+
+      } catch (error) {
+        alert('City not found or API limit exceeded.');
+        console.error(error);
+      }
+    }
+
+    // Load default city on page load
+    window.onload = getWeatherData;
+  </script>
+</body>
+</html>
+
